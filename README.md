@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 # 2017 fall notes repo 
 
 2017 fall at college.
@@ -11,6 +9,6 @@ courses:
 
 todo:
 - digital image processing
-- computer networks
+- 计算机网络
 - 交响乐欣赏
 - artificial intelligence
