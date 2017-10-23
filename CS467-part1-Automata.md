@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 # CS467 part1 Automata
 ##log 
 **week2** lec2pdf-22, note-22, book-none
