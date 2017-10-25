@@ -1,25 +1,29 @@
-# is307 Introduction to Cryptography and Infomation Security
+# is307 Introduction to Cryptography and Information Security
+
+## acknowledgments
+Reference book: *William Stallings - Cryptography and Network Security: Principles and Practice (5th Edition)*
+
 ## lecture 1 Introduction
 
 **What is information security?**
-<li>ISO(not proper): confidentiality, integrity, availability of information.
-<li>right definition: information security is the science of information system in the presence of adversary.
+- ISO(not proper): confidentiality, integrity, availability of information.
+- right definition: information security is the science of information system in the presence of adversary.
 
 
 **Aspects of security:** 
-<li>security attack
-<li>security service
-<li>security mechanism
+- security attack
+- security service
+- security mechanism
 
 **What should be kept in mind?**
 Security is a part of information system 
-Do not setuo security just for security's sake.
+Do not setup security just for security's sake.
 
 **Is there completely secure system?**
 According to the definition, there is.
 
 **Attack**
-passive: interciption
+passive: interception
 active: modification, interruption, fabrication
 
 **Service**
@@ -36,21 +40,21 @@ security system have to be difficult to break. Find difficult problem: cryptogra
 
 
 ## Lecture 2
-**What is the range we talk about in this lecture?** symetric encryption. Also secret key or conventional key. Popular before public key appeared.
+**What is the range we talk about in this lecture?** symmetric encryption. Also secret key or conventional key. Popular before public key appeared.
 
 **Shannon's model of secret communication** secure channel and cipher channel
 
-**From the Shannon model, we get the cipher system definiion** Five elements are Key, Encrpt func, Decript func, plaintext, cipher text: 
-$M,C,K,C=E_K(M),M=D_K(C)$ note that the $D_K(C)$'s $K$ is a inver of encrpt.
+**From the Shannon model, we get the cipher system definition** Five elements are Key, Encrypt func, Decrypt func, plaintext, cipher text: 
+$M,C,K,C=E_K(M),M=D_K(C)$ note that the $D_K(C)$'s $K$ is a inverse of encrypt.
 
 **Some simple example**
-Transpositoin: seems like permutation 
+Transposition: seems like permutation 
 Substitution: 
-<li>alphabet shift(also a permutation), Caeser Cipher
-<li>above is also monoalphabetic cipher - language redundacy, 
+- alphabet shift(also a permutation), Caesar Cipher
+- above is also monoalphabetic cipher - language redundancy, 
 frequency analysis
-<li>multiple substitution: frequency analysis do not work - Hill(make the alphabet longer) Vegenere. Polyalphabetic. Periodic.
-<li> rotor machine in ww2: 3 rotor($26^3<<26!$ avoid repeat in design)
+- multiple substitution: frequency analysis do not work - Hill(make the alphabet longer) Vegenere. Polyalphabetic. Periodic.
+- rotor machine in WW-II: 3 rotor($26^3<<26!$ avoid repeat in design)
 
 **These above are all easy to break, any thing better or ultimate?** Yes, there are provable perfect secret cipher. e.g. one-time-pad. Sadly, not practical. why
 
@@ -59,7 +63,7 @@ frequency analysis
 
 
 
-## Lec3 How to prove secrety
+## Lec3 How to prove security
 **Range we talk about** - confidentiality - about who can read what
 
 **To achieve security, we first find out where the attackers are and what's their capability and knowledge.**
@@ -73,11 +77,11 @@ frequency analysis
 
 ### about attacker's capability
 **classify** 
-<li>unconditional security(only depend on knowledge)
-	<li>perfect secrecy $P(Y|X)=P(Y),P(X|Y)=P(X)$
-	<li>strongly ideal cipher: $P(K|X)=P(K)$
-	<li>truly unbreakable: against chosen-text attacks
-	**perfect secrecy** redundacy analysis do not work. entropy, redundacy, unicity distance
+- unconditional security(only depend on knowledge)
+	- perfect secrecy $P(Y|X)=P(Y),P(X|Y)=P(X)$
+	- strongly ideal cipher: $P(K|X)=P(K)$
+	- truly unbreakable: against chosen-text attacks
+	**perfect secrecy** redundancy analysis do not work. entropy, redundancy, unicity distance
 	**strongly ideal cipher** against ciphertext-only, compression, not practical.
 	**truly unbreakable** remaining ciphertext and plaintext are stt-ind, random cipher.
 
@@ -88,7 +92,7 @@ frequency analysis
 
 
 ## Lec4 BLock Cipher DES 
-One way functions: one-way fucntion, keyed function, keyed one-way function, trapdoor functions
+One way functions: one-way function, keyed function, keyed one-way function, trapdoor functions
 
 Block Cipher: Definition, idea of design: easy to use(encrypt and decrypt), hard break(to know key or partially).
 Cipher parameters: block size $m$(64DES, 128AES), key size $k$. 
@@ -101,7 +105,7 @@ Security: confusion(hard to determine the key from known cipher and plain) diffu
 Iterated block ciphers
 $X, Y, K, r, f, Y_i, K_i$, key schedule, f is round function 
 $Y_0 = X$, $K_i = key(K, i)$, $Y_i = f(Y_{i-1}, K_{i-1})$
-Why iteration? It provides diffusion and confussion. $c^r,rc(f)$
+Why iteration? It provides diffusion and confusion. $c^r,rc(f)$
 
 DES 
 What is DES? data encryption standard
@@ -133,7 +137,73 @@ weak keys
 
 
 
+## Number Theory basic 
+*This part is come from book chapter 4 and chapter 8*
+### Divisibility and the Division Algorithm 
+**Term** 
+- divide, divisor, factor 
+- division algorithm, remainder, residue
 
+### Euclidean algorithm 
+**Term**
+- relatively prime, gcd(greatest common divisor), 
+gcd(a, 0)=a 
+
+### Modular Arithmetic
+**Term**
+- modulus, congruent modulo n, modular arithmetic(add, sub, mul)
+- $Z_n=\\{0, 1, ..., (n-1)\\}$, set of residue, residue classes (mod n).
+
+If $ab \equiv ac \pmod n $ and $gcd(a, n)=1$, then $b \equiv c \pmod n$. 
+- gcd(a,n)=1 implies the existence of the multiplicative inverse of $a$. Thus $(a^{-1}ab) \equiv (a^{-1}ac) \pmod n$
+
+#### Extended Euclidean Algorithm 
+
+### Groups, Rings, and Fields 
+These are fundamental elements of a branch of mathematics known as abstract algebra or modern algebra. In abstract algebra, we are concerned with sets on whose elements we can operate algebraically; that is we combine two elements with an operation defined on this set to obtain a third elements of the set. 
+
+#### Definition of Groups, Rings and Fields
+![definition of groups, ring and field](./images/DefinitionOfGroupsRingField.JPG)
+
+**Example of group**: $S_n$ to be the set of all permutations of $n$ distinct symbols.
+**Additional Concepts** 
+- finite group, order, infinite group 
+- Cyclic group: exponentiation within a group, generate, generator of $G$
+
+#### Finite Fields of the form $GF(p)$
+The order of a finite field must be a power of a prime $p$
+**Definition of GF(p)** $Z_p$ and modulo $p$. $p$ is a prime number.
+Each elements of the set other than 0 has a multiplicative inverse.
+
+### prime number 
+Unique integer prime number factorization
+
+### Fermat's Theorem and Euler's Theorem 
+The two play important role in RSA public-key system.
+**Fermat's Theorem**
+If $p$ is prime and $a$ is a positive integer not divisible by $p$, then $a^{p-1} \equiv 1 \pmod p$.
+Another relaxing form: $a^p \equiv a \pmod p$. This form does not require that gcd(a,n)=1.
+**Euler's Totient Function**
+$\Phi(n)$ is defined as the number of positive integers less than $n$ and relatively prime to $n$. 
+
+### Testing for Primality
+#### Miller-Rabin Algorithm 
+Any prime number $a>2$ can be written as $a =1+2^kq $. $q$ is an odd number. Use two properties of a prime number:
+1. Prime number $p$ and positive integer $a$ that $a < p$, then $a^2 \equiv 1 \pmod p$ if and only if $a \pmod p = 1$ or $a \pmod p = -1$.
+2. $a^q \equiv 1 \pmod p$ . **Or**
+ $ \exists j, 1 \leq j \leq k$ such that a^{2^{j-1}} \equiv -1 \pmod p.
+
+Each time running the algorithm, it will return a result either *composite* or *inconclusive*. P(p is not a prime but return is 'inconclusive') < 1/4. We can repeat the algorithm when it return *inconclusive*.
+
+### Chinese Remainder Theory
+TODO
+
+### Discret Logrithm
+For $a, n$ gcd(a,n)=1, there is some number $m$, that $a^m \pmod p=1$. With Euler's Theorem, we know that $m$ can be $\Phi(p)$. 
+However, $\Phi(p)$ is not always the least positive choice of $m$.
+This least positive choice is called: the order of $a (\pmod p)$, the length of period(周期) generated by $a$.
+**Primitive root**: If the least positive choice is exactly $\Phi(p)$, then $a$ is primitive root of $n$.
+Not all integers have primitive roots. In fact, the only integers with primitive roots are those of the form $2, 4, p^\alpha, and 2p^\alpha$, where $p$ is any odd prime number.
 
 
 
@@ -169,7 +239,7 @@ It is computationally infeasible to find any pair $(x, y)$ such that $H(x)=H(y)$
 For collision resistant attack, and adversary wishes to find two messages or data blocks, x and y that $H(x)=H(y)$. With the result of birthday paradox, we can expect to find two data blocks with the same hash value within $\sqrt{2^m}$
 
 ### Cryptanalysis
-The ideal hash algorithm will require a cryptanalytic effort greater than or equal to the bruteforce effort.
+The ideal hash algorithm will require a cryptanalytic effort greater than or equal to the brute-force effort.
 
 The overall structure of typical secure hash function - iterated hash function. 
 The hash function takes an input message and partitions it into $L$ fixed-size blocks of $b$ bits each. If necessary, the final block is padded to $b$ bits. The final block also includes the value of the total length of the input. The inclusion of the length makes the job of opponent more difficult.
@@ -181,7 +251,7 @@ HASH FUNCTION
 Definition of hash function: from message to hash code 
 application: 
 - modification detection code (MDC) require: second preimage resistant, also called one-way
-- signature. To sign a message M, first h=H(M), then sign hash code h. s=S(H). motivation: can not use redundace attack. require: collision free 
+- signature. To sign a message M, first h=H(M), then sign hash code h. s=S(H). motivation: can not use redundancy attack. require: collision free 
 
 RANDOM ORACLE
 random oracle: random first answer, fixed later asked 
@@ -191,8 +261,8 @@ random oracle model(ROM): a proving framework. If a system is security in ROM, w
 SECURITY OF HASH FUNCTION 
 mentioned two requirement
 one-way (second preimage resistance, weakly one-way) fixed target, complexity=$2^m$, 
-collision free(collision resistance, strong one-way) arbitray pair, complexity=$2^{m/2}$
-NOTE that as hash funciton map a large space to a smaller one, there are always collision, the keypoint is 'infeasible'
+collision free(collision resistance, strong one-way) arbitrary pair, complexity=$2^{m/2}$
+NOTE that as hash function map a large space to a smaller one, there are always collision, the keypoint is 'infeasible'
 COMPLEXITY COMPUTATION: basic combinatorics and probability, birthday paradox(not intuitive) 
 
 
@@ -208,17 +278,17 @@ ATTACK (for iterated hash)
 - Target attack (2nd preimage attack): given M, $H_0$ find M'
 free-start target attack: find H', M' that $Hash(H_0', M)=Hash(H_0, M)$
 message chosen attack: find a set $C$(in fact a set that can be partition because of equivalent class theorem) $\forall M \in C, \exists M' \ s.t. Hash(H_0, M)=Hash(H_0, M')$
-- Collisoin attack: given $H_0$, find M, M'
+- Collision attack: given $H_0$, find M, M'
 semi free-start collision attack: find $H_0$ M, M', $Hash(H_0,M)=Hash(H_0, M')$
 free-start collision attack: find $H_0', M, M'$, $Hash(H_0,M)=Hash(H_0', M')$
 Complexity:
-$C_{FS-target} \leq C_{target} \leq 2^m$, $C_{FS-collision} \leq C_{semi-FS-collision} \leq C_{collisoin} \leq 2^{m/2}$
+$C_{FS-target} \leq C_{target} \leq 2^m$, $C_{FS-collision} \leq C_{semi-FS-collision} \leq C_{collision} \leq 2^{m/2}$
 From complexity we have these below relationships
-relationship between target and collison attack: target -> collisoin 
+relationship between target and collision attack: target -> collision 
 relationship between free-start and usual: security against free-start attack -> security against usual
 relationship between compress function and Hash chain: $h$ attack -> $H$ attack, ***chain may be weaker than link***
 
-ATTACK on HASH(chian)
+ATTACK on HASH(chain)
 Trival free-start attack: find H_1, don't need to start at first block $Hash(H_0, M_1, M_2)=Hash(H_1, M_2)$
 Trival semi free-start attack: find fixed point, still use the given $H_0$
 Long-message target attack (n block in the given message)
@@ -227,16 +297,16 @@ $C_{target}(Hash) \leq 2 \times 2^m/n, \ for \ n \leq 2^{m/2}$
 $C_{target}(Hash) \leq 2 \times 2^{m/2}, \ for \ n > 2^{m/2}$
 
 MD-STRENGTHENING 
-Taking advantage that M' can have different length from M, one can break hash wiout break h. (add some prefix!)
+Taking advantage that M' can have different length from M, one can break hash without break h. (add some prefix!)
 Merkle-Damgaard strengthening: let the last block be the length of the original message.
-Theorem: against free-start collisoin attack, Hash-MD is as secure as h. 
+Theorem: against free-start collision attack, Hash-MD is as secure as h. 
 We can also say that free-start collision attack on HashMD <=> free-start collision on h.
 Collision attack on HashMD implies free-start collision on h. inverse is unknown
 
 Target attack when h is not one-way 
 Theorem 3 $C_{target}(HashMD) \leq 2^{m/2}C_{FS-target}(h)^{1/2}$
 Proof: given $HashMD(H_0, M_1, M_2, M_3,...)$ and given $H_2$. We use meet-in-the-middle-attack to show that the complexity is only $2^{(m+s)/2}$.
-We try $2^{(m+s)/2}$ values of $M_1'$, and forward to compute $2^{(m+s)/2}$ values of $H_1'$. We try $2^{(m-s)/2}$ values of $M_2'$ and backward to compute $2^{(m-s)/2}$ values of $G_1$. Note that here we use $2^s$ cmplexity to compute each backward. Thus both forward and backward use $2^{(m+s)/2}$. 
+We try $2^{(m+s)/2}$ values of $M_1'$, and forward to compute $2^{(m+s)/2}$ values of $H_1'$. We try $2^{(m-s)/2}$ values of $M_2'$ and backward to compute $2^{(m-s)/2}$ values of $G_1$. Note that here we use $2^s$ complexity to compute each backward. Thus both forward and backward use $2^{(m+s)/2}$. 
 With such much $H_1'$ and $G_1$, we get high probability to find collision which means that $HashMD(H_0, M_1', M_2', M_3,...)=HashMD(H_0, M_1, M_2, M_3,...)$
 
 Meet-in-the-middle attack 
